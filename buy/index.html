@@ -16,7 +16,7 @@
     />
 
     <title>Unleash the Power of Elemental Spirits | winsespirit.com</title>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -198,13 +198,21 @@
         Select one of the trusted wallet below to purchase $ESPIRIT tokens
       </p>
       <div class="flex flex-col sm:flex-row sm:gap-[32px]">
-        <a href="https://metamask.io/" rel="noreferrer noopener" target="_blank">
+        <a
+          href="https://metamask.io/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
           <img
             class="mb-[24px] sm:block transform transition-transform duration-300 hover:scale-105"
             src="/assets/images/buy-1.png"
             alt="Image 1"
         /></a>
-        <a href="https://www.exodus.com/" rel="noreferrer noopener" target="_blank">
+        <a
+          href="https://www.exodus.com/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
           <img
             class="mb-[24px] sm:block transform transition-transform duration-300 hover:scale-105"
             src="/assets/images/buy-2.png"
@@ -216,7 +224,11 @@
             src="/assets/images/buy-3.png"
             alt="Image 3"
         /></a>
-        <a href="https://trustwallet.com/" rel="noreferrer noopener" target="_blank">
+        <a
+          href="https://trustwallet.com/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
           <img
             class="mb-[24px] sm:block transform transition-transform duration-300 hover:scale-105"
             src="/assets/images/buy-4.png"
@@ -241,7 +253,7 @@
       </div>
     </main>
 
-<footer class="text-white py-12 px-[16px] sm:px-[400px]">
+    <footer class="text-white py-12 px-[16px] sm:px-[400px]">
       <div class="max-w-7xl mx-auto text-center">
         <div class="mb-4">
           <img
@@ -267,7 +279,7 @@
           </div>
           <div>
             <img
-           src="/assets/images/trezor.svg"
+              src="/assets/images/trezor.svg"
               alt="Icon 2"
               class="w-12 h-12 mx-auto transform transition-transform duration-300 hover:scale-105"
             />
@@ -293,7 +305,7 @@
         >
           <a
             href="/terms/"
-            class="text-[10px] sm:text-sm  opacity-80 hover:text-green-400"
+            class="text-[10px] sm:text-sm opacity-80 hover:text-green-400"
             >Terms of Service</a
           >
           <a
@@ -377,7 +389,7 @@
         </div>
 
         <!-- Form Fields -->
-       <form id="signUpForm" class="flex flex-col items-center sm:px-[150px]">
+        <form id="signUpForm" class="flex flex-col items-center sm:px-[150px]">
           <div class="mb-4 w-full">
             <label for="username" class="text-white block text-xs mb-2"
               >Username</label
@@ -447,7 +459,7 @@
           </div>
           <div
             class="g-recaptcha mb-4"
-            data-sitekey="6LenXzIrAAAAAFv_c1tFZ09-qdt3cK-L6XSiEW8D"
+            data-sitekey="6LewQ0orAAAAAJRurVjGtpb_wlbmAy12ass8Uodw"
           ></div>
 
           <button
@@ -512,109 +524,108 @@
       You Successfully Log In
     </div>
 
-  <script>
-    const burgerIcon = document.getElementById("burger-icon");
-const mobileMenu = document.getElementById("mobile-menu");
-const mobileLinks = document.querySelectorAll(".mobile-link");
+    <script>
+      const burgerIcon = document.getElementById("burger-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
 
-// Toggle the mobile menu when the burger icon is clicked
-burgerIcon.addEventListener("click", function () {
-  mobileMenu.classList.toggle("hidden");
-});
+      // Toggle the mobile menu when the burger icon is clicked
+      burgerIcon.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+      });
 
-// Close the mobile menu when any link is clicked
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", function () {
-    mobileMenu.classList.add("hidden");
-  });
-});
+      // Close the mobile menu when any link is clicked
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+      });
 
-// Get modal elements for Log In
-const logInBtnMobile = document.getElementById("logInBtnMobile");
-const logInBtn = document.getElementById("logInBtn");
-const logInModal = document.getElementById("logInModal");
-const closeLogInModalBtn = document.getElementById("closeLogInModalBtn");
-const logInForm = document.getElementById("logInForm");
-const thankYouMessageForLogIn = document.getElementById(
-  "thankYouMessageForLogIn"
-);
+      // Get modal elements for Log In
+      const logInBtnMobile = document.getElementById("logInBtnMobile");
+      const logInBtn = document.getElementById("logInBtn");
+      const logInModal = document.getElementById("logInModal");
+      const closeLogInModalBtn = document.getElementById("closeLogInModalBtn");
+      const logInForm = document.getElementById("logInForm");
+      const thankYouMessageForLogIn = document.getElementById(
+        "thankYouMessageForLogIn"
+      );
 
-// Log In
-logInBtn.addEventListener("click", function () {
-  logInModal.style.display = "flex"; // Show the modal
-});
-logInBtnMobile.addEventListener("click", function () {
-  logInModal.style.display = "flex"; // Show the modal
-});
-// Close the modal when the close button is clicked
-closeLogInModalBtn.addEventListener("click", function () {
-  logInModal.style.display = "none"; // Hide the modal
-});
+      // Log In
+      logInBtn.addEventListener("click", function () {
+        logInModal.style.display = "flex"; // Show the modal
+      });
+      logInBtnMobile.addEventListener("click", function () {
+        logInModal.style.display = "flex"; // Show the modal
+      });
+      // Close the modal when the close button is clicked
+      closeLogInModalBtn.addEventListener("click", function () {
+        logInModal.style.display = "none"; // Hide the modal
+      });
 
-// Handle form submission for Log In
-logInForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent form submission
+      // Handle form submission for Log In
+      logInForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent form submission
 
-  // Hide the modal
-  logInModal.style.display = "none";
+        // Hide the modal
+        logInModal.style.display = "none";
 
-  // Show the "Thank You" message
-  thankYouMessageForLogIn.style.display = "block";
+        // Show the "Thank You" message
+        thankYouMessageForLogIn.style.display = "block";
 
-  // Reset the form fields
-  logInForm.reset();
+        // Reset the form fields
+        logInForm.reset();
 
-  // Hide the "Thank You" message after 3 seconds
-  setTimeout(function () {
-    thankYouMessageForLogIn.style.display = "none";
-  }, 3000);
-});
+        // Hide the "Thank You" message after 3 seconds
+        setTimeout(function () {
+          thankYouMessageForLogIn.style.display = "none";
+        }, 3000);
+      });
 
-// sign Up
-const signUpBtnStart = document.getElementById("signUpBtnStart");
-const signUpBtnContacts = document.getElementById("signUpBtnContacts");
-const signUpBtnMobile = document.getElementById("signUpBtnMobile");
-const signUpBtn = document.getElementById("signUpBtn");
-const signUpModal = document.getElementById("signUpModal");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const signUpForm = document.getElementById("signUpForm");
-const thankYouMessage = document.getElementById("thankYouMessage");
+      // sign Up
+      const signUpBtnStart = document.getElementById("signUpBtnStart");
+      const signUpBtnContacts = document.getElementById("signUpBtnContacts");
+      const signUpBtnMobile = document.getElementById("signUpBtnMobile");
+      const signUpBtn = document.getElementById("signUpBtn");
+      const signUpModal = document.getElementById("signUpModal");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const signUpForm = document.getElementById("signUpForm");
+      const thankYouMessage = document.getElementById("thankYouMessage");
 
-// Open the modal when Sign Up button is clicked
-signUpBtn.addEventListener("click", function () {
-  signUpModal.style.display = "flex"; // Show the modal
-});
-signUpBtnMobile.addEventListener("click", function () {
-  signUpModal.style.display = "flex"; // Show the modal
-});
-signUpBtnContacts.addEventListener("click", function () {
-  signUpModal.style.display = "flex"; // Show the modal
-});
-signUpBtnStart.addEventListener("click", function () {
-  signUpModal.style.display = "flex"; // Show the modal
-});
+      // Open the modal when Sign Up button is clicked
+      signUpBtn.addEventListener("click", function () {
+        signUpModal.style.display = "flex"; // Show the modal
+      });
+      signUpBtnMobile.addEventListener("click", function () {
+        signUpModal.style.display = "flex"; // Show the modal
+      });
+      signUpBtnContacts.addEventListener("click", function () {
+        signUpModal.style.display = "flex"; // Show the modal
+      });
+      signUpBtnStart.addEventListener("click", function () {
+        signUpModal.style.display = "flex"; // Show the modal
+      });
 
-// Close the modal when the close button is clicked
-closeModalBtn.addEventListener("click", function () {
-  signUpModal.style.display = "none"; // Hide the modal
-});
+      // Close the modal when the close button is clicked
+      closeModalBtn.addEventListener("click", function () {
+        signUpModal.style.display = "none"; // Hide the modal
+      });
 
-// Handle form submission
-signUpForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent form submission
+      // Handle form submission
+      signUpForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent form submission
 
-  // Hide the modal
-  signUpModal.style.display = "none";
+        // Hide the modal
+        signUpModal.style.display = "none";
 
-  // Show the "Thank You" message
-  thankYouMessage.style.display = "block";
-  signUpForm.reset();
-  // Hide the "Thank You" message after 3 seconds
-  setTimeout(function () {
-    thankYouMessage.style.display = "none";
-  }, 3000);
-});
-
-  </script>
+        // Show the "Thank You" message
+        thankYouMessage.style.display = "block";
+        signUpForm.reset();
+        // Hide the "Thank You" message after 3 seconds
+        setTimeout(function () {
+          thankYouMessage.style.display = "none";
+        }, 3000);
+      });
+    </script>
   </body>
 </html>
