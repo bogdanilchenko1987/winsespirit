@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="Unleash the Power of Elemental Spirits" />
+
+    <meta
+      name="keywords"
+      content="NFT, tokens, winsespirit, winsespirit.com, NFT game "
+    />
+
+    <title>Unleash the Power of Elemental Spirits | winsespirit.com</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {},
+            fontFamily: { cinzel: ["Cinzel", "serif"] },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .custom-text-shadow {
+        text-shadow: 8px 4px 20.3px rgba(230, 114, 6, 0.6);
+      }
+      #signUpModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+      }
+      /* Thank You message */
+      #thankYouMessage,
+      #thankYouMessageForLogIn {
+        display: none;
+        text-align: center;
+        background-color: #dfdddd;
+        padding: 50px;
+        border-radius: 10px;
+        color: green;
+        font-size: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-b from-[#05012B] via-[#00160A] to-[#05012B] text-white font-cinzel"
+  >
+    <header class="py-4">
+      <div class="max-w-7xl mx-auto px-8">
+        <div
+          class="bg-gradient-to-r from-[#493E7A33] to-[#FFFFFF33] via-[#06012B] rounded-l-full rounded-r-full pt-[12px] pb-[12px] pl-[32px] pr-[32px] flex justify-between items-center relative"
+        >
+          <div class="flex items-center">
+            <a href="/">
+              <img
+                src="/assets/images/logo.png"
+                alt="Elemental Spirits Logo"
+                class="w-[45px] h-[40px] sm:w-[59px] sm:h-[55px]"
+            /></a>
+            <span
+              class="text-white text-xs sm:text-sm sm:font-semibold ml-2 uppercase"
+              >Elemental Spirits</span
+            >
+          </div>
+
+          <!-- Burger Menu Icon (only visible on mobile) -->
+          <div class="block lg:hidden">
+            <button id="burger-icon" class="text-white">
+              <span class="block w-6 h-0.5 bg-white mb-2"></span>
+              <span class="block w-6 h-0.5 bg-white mb-2"></span>
+              <span class="block w-6 h-0.5 bg-white"></span>
+            </button>
+          </div>
+
+          <!-- Navigation Links -->
+          <nav class="hidden lg:block">
+            <ul class="flex space-x-6 text-white text-sm">
+              <li>
+                <a href="/#what-is" class="hover:text-green-400"
+                  >What is Elemental Spirits</a
+                >
+              </li>
+              <li>
+                <a href="/#gameplay" class="hover:text-green-400">Gameplay</a>
+              </li>
+              <li>
+                <a href="/marketplace/" class="hover:text-green-400"
+                  >Marketplace</a
+                >
+              </li>
+              <li>
+                <a href="/#roadmap" class="hover:text-green-400">Roadmap</a>
+              </li>
+              <li>
+                <a href="/#community" class="hover:text-green-400">Community</a>
+              </li>
+              <li><a href="/faq/" class="hover:text-green-400">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <!-- Log In / Sign Up Buttons -->
+          <div class="space-x-4 hidden lg:block">
+            <button
+              id="logInBtn"
+              class="bg-[#23da08] text-white px-6 py-3 rounded-lg hover:bg-green-400 transition duration-300"
+            >
+              Log In
+            </button>
+            <button
+              id="signUpBtn"
+              class="bg-[#23da08] text-white px-6 py-3 rounded-lg hover:bg-green-400 transition duration-300"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Links (hidden by default, shown when burger icon is clicked) -->
+        <div
+          id="mobile-menu"
+          class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50 hidden"
+        >
+          <div class="bg-[#06012B] p-4 text-white">
+            <ul class="space-y-4">
+              <li>
+                <a href="/#what-is" class="hover:text-green-400 mobile-link"
+                  >What is Elemental Spirits</a
+                >
+              </li>
+              <li>
+                <a href="/#gameplay" class="hover:text-green-400 mobile-link"
+                  >Gameplay</a
+                >
+              </li>
+              <li>
+                <a href="/marketplace/" class="hover:text-green-400 mobile-link"
+                  >Marketplace</a
+                >
+              </li>
+              <li>
+                <a href="/#roadmap" class="hover:text-green-400 mobile-link"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a href="/#community" class="hover:text-green-400 mobile-link"
+                  >Community</a
+                >
+              </li>
+              <li>
+                <a href="/faq/" class="hover:text-green-400 mobile-link">FAQ</a>
+              </li>
+            </ul>
+            <div class="space-x-4 mt-8 mb-4">
+              <button
+                id="logInBtnMobile"
+                class="bg-[#23da08] text-white px-6 py-3 rounded-lg hover:bg-green-400 transition duration-300"
+              >
+                Log In
+              </button>
+              <button
+                id="signUpBtnMobile"
+                class="bg-[#23da08] text-white px-6 py-3 rounded-lg hover:bg-green-400 transition duration-300"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="relative bg-cover bg-center h-[70vh] sm:h-[90vh]"
+        style="background-image: url('/assets/images/hero.jpg')"
+      >
+        <img
+          src="/assets/images/bg-2.jpg"
+          alt="Overlay Image"
+          class="absolute inset-0 w-full h-full object-cover opacity-70"
+        />
+
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <div
+          class="relative z-10 flex flex-col items-center text-white px-[40px] py-[40px] sm:px-[180px] sm:py-[80px]"
+        >
+          <div class="flex items-center mb-6">
+            <img
+              src="/assets/images/logo.png"
+              alt="Elemental Spirits Logo"
+              class="w-[50px] h-[50px] sm:w-[120px] sm:h-[120px]"
+            />
+            <span
+              class="text-white text-[18px] font-semibold ml-4 uppercase sm:text-[25px]"
+            >
+              Elemental Spirits
+            </span>
+          </div>
+
+          <h1
+            class="text-[24px] text-center font-bold leading-tight mb-12 uppercase sm:text-[70px] sm:mb-6"
+          >
+            Unleash the Power of Elemental Spirits!
+          </h1>
+          <p class="text-sm mb-6 text-center sm:text-base sm:mb-4">
+            Unleash the Power of Elemental Spirits!
+          </p>
+          <a
+            href="/marketplace/"
+            class="bg-[#23da08] text-white px-6 py-3 text-xl font-semibold rounded-lg hover:bg-green-400 sm:px-4 sm:py-2 sm:text-lg"
+            >Buy Your First Hero</a
+          >
+        </div>
+      </section>
+
+      <section
+        id="what-is"
+        class="px-[16px] mt-[24px] sm:px-[80px] sm:mt-[80px]"
+      >
+        <div class="max-w-7xl mx-auto text-center">
+          <div class="mb-8">
+            <p class="text-[16px] sm:text-[24px] text-white mb-4">
+              Elemental Spirits is a
+              <strong>unique world</strong> where magical spirits, controlling
+              the elements, compete and interact in special battles. This is a
+              <strong>PlaytoEarn NFT game</strong> where everyone can collect
+              evolve and win tokens and rare NFTs for their activity
+            </p>
+          </div>
+
+          <div>
+            <img
+              src="/assets/images/a1.jpg"
+              alt="Elemental Spirits Image"
+              class="hidden sm:block mx-auto rounded-lg shadow-lg"
+            />
+
+            <img
+              src="/assets/images/a11.jpg"
+              alt="Elemental Spirits Vertical Image"
+              class="sm:hidden mx-auto rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="gameplay"
+        class="px-[24px] mt-[24px] sm:px-[150px] sm:mt-[80px]"
+      >
+        <div class="max-w-7xl mx-auto text-center relative">
+          <div class="mb-8">
+            <h2
+              class="text-2xl sm:text-3xl font-semibold text-white mb-4 uppercase"
+            >
+              PvP Battles
+            </h2>
+            <p class="text-sm sm:text-lg text-white opacity-80">
+              Fight in solo or team battles using the unique abilities of your
+              ghosts. Winners receive tokens and rare NFTs.
+            </p>
+          </div>
+
+          <div class="relative flex flex-col items-center">
+            <img
+              src="/assets/images/b1.jpg"
+              alt="Elemental Spirits Image"
+              class="w-auto h-auto max-w-full rounded-lg shadow-lg mb-6 transform transition-transform duration-300 hover:scale-105"
+            />
+
+            <a
+              href="/pvp/"
+              class="bg-orange-500 text-white px-6 py-3 rounded-lg text-xl font-semibold hover:bg-orange-700 transition-all duration-300"
+            >
+              💎 Join the fight
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-[24px] mt-[24px] sm:px-[150px] sm:mt-[80px]">
+        <div class="max-w-7xl mx-auto text-center relative">
+          <div class="mb-8">
+            <h2
+              class="text-2xl sm:text-3xl font-semibold text-white mb-4 uppercase"
+            >
+              PvE Quests
+            </h2>
+            <p class="text-sm sm:text-lg text-white opacity-80">
+              Take part in exciting adventures and collect rare resources as you
+              explore the world of Elemental Spirits.
+            </p>
+          </div>
+
+          <div class="relative flex flex-col items-center">
+            <img
+              src="/assets/images/b2.jpg"
+              alt="Elemental Spirits Image"
+              class="w-auto h-auto max-w-full rounded-lg shadow-lg mb-6 transform transition-transform duration-300 hover:scale-105"
+            />
+
+            <a
+              href="/pve/"
+              class="bg-orange-500 text-white px-6 py-3 rounded-lg text-xl font-semibold hover:bg-orange-700 transition-all duration-300"
+            >
+              🗝️ Complete the Quest
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-[150px] mt-[80px] hidden sm:block">
+        <div class="max-w-7xl mx-auto text-center relative">
+          <div class="mb-8">
+            <h2
+              class="text-2xl sm:text-3xl font-semibold text-white mb-4 uppercase"
+            >
+              Spirit Evolution
+            </h2>
+            <p class="text-sm sm:text-lg text-white opacity-80">
+              Combine Spirits to create more powerful and rare NFTs Level up
+              your Spirits to make them stronger and more valuable on the
+              market.
+            </p>
+          </div>
+
+          <div class="relative flex flex-col items-center">
+            <img
+              src="/assets/images/b3.jpg"
+              alt="Elemental Spirits Image"
+              class="w-auto h-auto max-w-full rounded-lg shadow-lg mb-6 transform transition-transform duration-300 hover:scale-105"
+            />
+
+            <a
+              href="/spirit/"
+              class="bg-orange-500 text-white px-6 py-3 rounded-lg text-xl font-semibold hover:bg-orange-700 transition-all duration-300"
+            >
+              🟡 Evolve
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-[24px] mt-[48px] sm:px-[80px] sm:mt-[80px]">
+        <div class="max-w-7xl mx-auto text-center">
+          <div class="mb-8">
+            <h2
+              class="text-2xl sm:text-3xl font-semibold text-white mb-4 uppercase"
+            >
+              Play and Earn!
+            </h2>
+            <p
+              class="text-lg text-center text-white opacity-80 sm:text-left uppercase"
+            >
+              $ESPIRIT Token
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            <img
+              src="/assets/images/c1.png"
+              alt="Element 1"
+              class="rounded-lg transform transition-transform duration-300 hover:scale-105"
+            />
+            <img
+              src="/assets/images/c2.png"
+              alt="Element 2"
+              class="mx-auto rounded-lg transform transition-transform duration-300 hover:scale-105"
+            />
+            <img
+              src="/assets/images/c3.png "
+              alt="Element 3"
+              class="mx-auto rounded-lg transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap" class="px-[24px] mt-[48px] sm:px-[110px]">
+        <img
+          src="/assets/images/Roadmap.png"
+          alt="Element"
+          class="hidden sm:block mx-auto rounded-lg"
+        />
+        <img
+          src="/assets/images/Roadmap1.png"
+          alt="Element"
+          class="sm:hidden mx-auto rounded-lg"
+        />
+      </section>
+
+      <h2
+        class="text-lg sm:text-3xl font-semibold text-center text-white mt-[48px] sm:mt-[140px] mb-12 uppercase"
+      >
+        Join Our Journey to Success
+      </h2>
+      <section class="relative px-[16px] mt-[48px] sm:py-[80px] sm: mt-[80px]">
+        <!-- Background Image -->
+        <div
+          class="absolute inset-0 bg-cover bg-center"
+          style="background-image: url('/assets/images/bg-1.png')"
+        ></div>
+
+        <!-- Content Section -->
+        <div class="relative z-10 max-w-7xl mx-auto text-center">
+          <!-- Cards -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-[16px] sm:px-[80px] sm:pt-[150px]"
+          >
+            <!-- Card 1 -->
+            <div
+              class="bg-[#565759] rounded-lg border-[8px] border-[#414042] p-6"
+            >
+              <h3 class="text-sm sm:text-xl sm:font-semibold mb-4">
+                Q2 2025: Pre-sale
+              </h3>
+              <p class="text-xs sm:text-sm text-white opacity-80">
+                of spirit NFTs before the main drop; buyers will receive an
+                additional NFT in the next collection
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-[#565759] rounded-lg border-[8px] border-[#414042] p-4"
+            >
+              <h3 class="text-sm sm:text-xl sm:font-semibold mb-4">Q3 2025:</h3>
+              <p class="text-xs sm:text-sm text-white opacity-80">
+                Marketplace opens for buying and selling
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-[#565759] rounded-lg border-[8px] border-[#414042] p-6"
+            >
+              <h3 class="text-sm sm:text-xl sm:font-semibold mb-4">Q4 2025:</h3>
+              <p
+                class="text-xs sm:text-sm text-xs sm:text-sm text-white opacity-80text-white opacity-80"
+              >
+                Full launch of PVP and stakes system
+              </p>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="bg-[#565759] rounded-lg border-[8px] border-[#414042] p-6"
+            >
+              <h3 class="text-sm sm:text-xl sm:font-semibold mb-4">2026</h3>
+              <p class="text-xs sm:text-sm text-white opacity-80">
+                Mobile app release
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="community"
+        class="px-[16px] mt-[48px] sm:py-[80px] sm:px-[80px]"
+      >
+        <div class="max-w-7xl mx-auto text-center">
+          <h2
+            class="text-white text-center font-[Cinzel] font-semibold text-[24px] sm:text-[28px] sm:font-extrabold leading-[38px] mb-4 custom-text-shadow uppercase"
+          >
+            Together, We’re Revolutionizing the Game World!
+          </h2>
+
+          <p class="text-sm sm:text-lg text-white opacity-80 mb-8 uppercase">
+            Our team of blockchain, gaming and design experts are on a mission
+            to create a unique experience that combines the excitement of gaming
+            with real earning potential. Join us as we create the future of
+            interactive entertainment!
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:px-[120px]">
+            <div class="bg-gray-300 rounded-lg border-4 border-gray-400">
+              <img
+                src="/assets/images/f1.jpg"
+                alt="Feature 1"
+                class="w-full h-auto rounded-t-lg"
+              />
+            </div>
+
+            <div class="bg-gray-300 rounded-lg border-4 border-gray-400">
+              <img
+                src="/assets/images/f2.jpg"
+                alt="Feature 2"
+                class="w-full h-auto rounded-t-lg"
+              />
+            </div>
+
+            <div class="bg-gray-300 rounded-lg border-4 border-gray-400">
+              <img
+                src="/assets/images/f3.jpg"
+                alt="Feature 3"
+                class="w-full h-auto rounded-t-lg"
+              />
+            </div>
+
+            <div class="bg-gray-300 rounded-lg border-4 border-gray-400">
+              <img
+                src="/assets/images/f4.jpg"
+                alt="Feature 4"
+                class="w-full h-auto rounded-t-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-white py-12 px-[16px] sm:px-[400px]">
+      <div class="max-w-7xl mx-auto text-center">
+        <div class="mb-4">
+          <img
+            src="/assets/images/18.png"
+            alt="18+"
+            class="mx-auto w-16 h-16"
+          />
+        </div>
+
+        <p class="text-[14px] sm:text-lg opacity-80 mb-8">
+          NFTs and digital tokens are created for amusement and enjoyment.
+          Individuals take full responsibility for any uncertainties tied to
+          cryptocurrency use
+        </p>
+
+        <div class="flex justify-center items-center gap-4 mb-8">
+          <div>
+            <img
+              src="/assets/images/image 9.png"
+              alt="Icon 1"
+              class="w-12 h-12 mx-auto transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <div>
+            <img
+              src="/assets/images/trezor.svg"
+              alt="Icon 2"
+              class="w-12 h-12 mx-auto transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <div>
+            <img
+              src="/assets/images/image 7.png"
+              alt="Icon 3"
+              class="w-12 h-12 mx-auto transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <div>
+            <img
+              src="/assets/images/image 8.png"
+              alt="Icon 4"
+              class="w-12 h-12 mx-auto transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center items-center gap-[16px] sm:gap-[60px] mb-8"
+        >
+          <a
+            href="/terms/"
+            class="text-[10px] sm:text-sm opacity-80 hover:text-green-400"
+            >Terms of Service</a
+          >
+          <a
+            href="/privacy/"
+            class="text-[10px] sm:text-sm opacity-80 hover:text-green-400"
+            >Privacy Policy</a
+          >
+          <button
+            id="signUpBtnContacts"
+            class="text-[10px] sm:text-sm opacity-80 hover:text-green-400"
+          >
+            Contacts
+          </button>
+          <a
+            href="/faq/"
+            class="text-[10px] sm:text-sm opacity-80 hover:text-green-400"
+            >FAQ</a
+          >
+        </div>
+
+        <div class="flex justify-center items-center gap-4 mb-8">
+          <a
+            href="https://web.telegram.org/"
+            class="text-lg opacity-80 hover:text-green-400"
+          >
+            <img
+              src="/assets/images/te.png"
+              alt="img"
+              class="w-8 h-8 mx-auto"
+            />
+          </a>
+          <a
+            href="https://www.discord.com/"
+            class="text-lg opacity-80 hover:text-green-400"
+          >
+            <img
+              src="/assets/images/di.png"
+              alt="img"
+              class="w-8 h-8 mx-auto"
+            />
+          </a>
+          <a
+            href="https://www.Twitter.com/"
+            class="text-lg opacity-80 hover:text-green-400"
+          >
+            <img
+              src="/assets/images/tw.png"
+              alt="img"
+              class="w-8 h-8 mx-auto"
+            />
+          </a>
+          <a
+            href="https://www.Instagram.com/"
+            class="text-lg opacity-80 hover:text-green-400"
+          >
+            <img
+              src="/assets/images/in.png"
+              alt="img"
+              class="w-8 h-8 mx-auto"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div
+      id="signUpModal"
+      class="hidden fixed inset-0 bg-black/90 flex justify-center items-center z-50"
+    >
+      <div class="bg-[#011222] p-8 rounded-lg w-[300px] sm:w-[800px]">
+        <div class="flex justify-between mb-4">
+          <!-- Modal Title -->
+          <h2
+            class="text-sm sm:text-xl text-center text-white font-semibold w-full"
+          >
+            Create Account
+          </h2>
+          <!-- Close Button -->
+          <button id="closeModalBtn" class="text-white text-2xl">×</button>
+        </div>
+
+        <form id="signUpForm" class="flex flex-col items-center sm:px-[150px]">
+          <div class="mb-4 w-full">
+            <label for="username" class="text-white block text-xs mb-2"
+              >Username</label
+            >
+            <input
+              minlength="3"
+              type="text"
+              id="username"
+              class="w-full p-2 bg-gray-800 text-white rounded-lg text-xs"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <div class="mb-4 w-full">
+            <label for="email" class="text-white block text-xs mb-2"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="w-full p-2 bg-gray-800 text-white rounded-lg text-xs"
+              placeholder="Enter Email"
+              required
+            />
+          </div>
+          <div class="mb-4 w-full">
+            <label for="password" class="text-white block text-xs mb-2"
+              >Password</label
+            >
+            <input
+              minlength="8"
+              type="password"
+              id="password"
+              class="w-full p-2 bg-gray-800 text-white text-xs rounded-lg"
+              placeholder="Enter Password"
+              required
+            />
+            <small class="text-gray-400 text-xs"
+              >Minimum 8 characters, letter and number.</small
+            >
+          </div>
+          <div class="mb-4 w-full">
+            <label for="confirmPassword" class="text-white block text-xs mb-2"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              id="confirmPassword"
+              class="w-full p-2 bg-gray-800 text-white rounded-lg text-xs"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+
+          <div class="mb-4 w-full flex items-center">
+            <input type="checkbox" id="terms" required />
+            <label for="terms" class="text-white text-xs ml-2"
+              >I agree to the Terms of Use and Privacy Policy*</label
+            >
+          </div>
+
+          <div class="mb-6 w-full flex items-center">
+            <input type="checkbox" id="subscribe" />
+            <label for="subscribe" class="text-white text-xs ml-2"
+              >Subscribe to updates and special events</label
+            >
+          </div>
+          <div
+            class="g-recaptcha mb-4"
+            data-sitekey="6LenXzIrAAAAAFv_c1tFZ09-qdt3cK-L6XSiEW8D"
+          ></div>
+
+          <button
+            type="submit"
+            class="bg-[#23da08] text-white py-2 px-8 rounded-lg text-sm sm:text-xl font-semibold hover:bg-green-400 transition-all duration-300 w-full"
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Thank You Message -->
+    <div id="thankYouMessage" class="hidden">Account Successfully Created!</div>
+
+    <!-- Modal Structure for Log In -->
+    <div
+      id="logInModal"
+      class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50"
+    >
+      <div class="bg-[#011222] p-8 rounded-lg w-[300px] sm:w-[400px]">
+        <div class="flex justify-between mb-6">
+          <h2 class="text-2xl text-white font-bold">Log In</h2>
+          <button id="closeLogInModalBtn" class="text-white text-2xl">×</button>
+        </div>
+
+        <form id="logInForm">
+          <div class="mb-4">
+            <label for="logInUsername" class="text-white">Username</label>
+            <input
+              type="text"
+              id="logInUsername"
+              class="w-full p-2 mt-2 bg-gray-800 text-white rounded-lg"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="logInPassword" class="text-white">Password</label>
+            <input
+              type="password"
+              id="logInPassword"
+              class="w-full p-2 mt-2 bg-gray-800 text-white rounded-lg"
+              placeholder="Enter Password"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-[#23da08] text-white py-3 px-8 rounded-lg text-xl font-semibold hover:bg-green-400 transition-all duration-300 w-full"
+          >
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="thankYouMessageForLogIn" class="hidden">
+      You Successfully Log In
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://cdn-cookieyes.com/client_data/eca3f98417b469dbc1d5c65e/script.js"
+    ></script>
+  </body>
+</html>
